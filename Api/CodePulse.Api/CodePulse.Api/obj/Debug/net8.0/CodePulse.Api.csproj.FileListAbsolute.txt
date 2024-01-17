@@ -134,3 +134,4 @@ G:\Projects\Angular Projects\StudentAdminPortal\Api\CodePulse.Api\CodePulse.Api\
 G:\Projects\Angular Projects\StudentAdminPortal\Api\CodePulse.Api\CodePulse.Api\obj\Debug\net8.0\CodePulse.Api.pdb
 G:\Projects\Angular Projects\StudentAdminPortal\Api\CodePulse.Api\CodePulse.Api\obj\Debug\net8.0\CodePulse.Api.genruntimeconfig.cache
 G:\Projects\Angular Projects\StudentAdminPortal\Api\CodePulse.Api\CodePulse.Api\obj\Debug\net8.0\ref\CodePulse.Api.dll
+G:\Projects\Angular Projects\StudentAdminPortal\Api\CodePulse.Api\CodePulse.Api\obj\Debug\net8.0\CodePulse.Api.sourcelink.json

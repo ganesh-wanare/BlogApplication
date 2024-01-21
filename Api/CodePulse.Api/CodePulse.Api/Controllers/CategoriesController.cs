@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodePulse.Api.Controllers
-{   
+{
     //https://localhost:7006/api/Categories 
 
     [Route("api/[controller]")]
@@ -21,7 +21,7 @@ namespace CodePulse.Api.Controllers
         }
         //
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(CreateCategoryRequestDto request)
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequestDto request)
         {
             //Map Dto to Domain Model
             var category = new Category
@@ -52,7 +52,7 @@ namespace CodePulse.Api.Controllers
 
             // Map Domain model to DTO
             var response = new List<CategoryDTO>();
-            foreach (var category in categories) 
+            foreach (var category in categories)
             {
                 response.Add(new CategoryDTO
                 {
@@ -61,6 +61,59 @@ namespace CodePulse.Api.Controllers
                     UrlHandle = category.UrlHandle
                 });
             }
+            return Ok(response);
+        }
+
+        // Get https://localhost:7006/api/Categories/{id}
+        [HttpGet]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> GetCategoryById([FromRoute] Guid id)
+        {
+            var existingCategory = await categoryRepository.GetById(id);
+            if ( existingCategory is null) 
+            {
+                return NotFound();
+            }
+
+            var response = new CategoryDTO 
+            { 
+                Id = existingCategory.Id,
+                Name = existingCategory.Name,
+                UrlHandle = existingCategory.UrlHandle      
+            };
+
+            return Ok(response);
+        }
+
+
+        // PUT https://localhost:7006/api/Categories/{id}
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> EditCategory([FromRoute] Guid id, UpdateCategoryRequestDTO request)
+        {
+            // Convert DTO to Domain model
+            var category = new Category
+            {
+                Id = id,
+                Name = request.Name,
+                UrlHandle = request.UrlHandle
+            };
+
+            category = await categoryRepository.UpdateAsync(category);
+
+            if(category == null) 
+            {
+                return NotFound();
+            }
+
+            // Convert Domain model to DTO
+            var response = new CategoryDTO
+            {
+                Id = category.Id,
+                Name = category.Name,
+                UrlHandle = category.UrlHandle
+            };
+
             return Ok(response);
         }
     }

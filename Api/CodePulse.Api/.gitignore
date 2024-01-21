@@ -288,9 +288,7 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
-.vs/
-CodePulse.Api.sln
-CodePulse.Api
+
 
 # Visual Studio 6 build log
 *.plg
@@ -406,3 +404,7 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
+
+# .vs/
+# CodePulse.Api.sln
+# CodePulse.Api

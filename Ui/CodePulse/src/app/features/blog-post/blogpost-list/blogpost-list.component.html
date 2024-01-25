@@ -6,4 +6,23 @@
     routerLinkActive="router-link-active" 
     class="btn btn-primary">Add BlogPost</a>
 </div>
+
+<ng-container *ngIf="blogPosts$ | async as blogPost">
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th> Title </th>
+            <th> Short Description </th>
+            <th> Is Visible </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of blogPost">
+            <td> {{item.title}} </td>
+            <td> {{item.shortDescription}} </td>
+            <td> {{item.isVisible}} </td>
+        </tr>
+    </tbody>
+</table>
+</ng-container>
 </div>

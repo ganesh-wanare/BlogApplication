@@ -31,6 +31,6 @@ export class AddBlogpostComponent {
       next: (response) => {
         this.router.navigateByUrl('/admin/blogpost');
       }
-    })
+    });
   }
 }

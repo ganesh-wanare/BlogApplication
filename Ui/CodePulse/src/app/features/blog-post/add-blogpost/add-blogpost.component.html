@@ -101,6 +101,20 @@
             </div>
 
             <div class="mt-3">
+                <label class="form-label"> Categories </label>
+                <ng-container *ngIf="categories$ | async as categories">
+                    <select class="form-control" 
+                    name="categories" 
+                    id="categories" multiple
+                    [(ngModel)]="model.categories">
+                        <option *ngFor="let category of categories" 
+                        [value]="category.id">{{category.name}}</option>
+                    </select>
+                </ng-container>
+
+            </div>
+
+            <div class="mt-3">
                 <button type="submit"
                 class="btn btn-primary">Submit</button>
             </div>

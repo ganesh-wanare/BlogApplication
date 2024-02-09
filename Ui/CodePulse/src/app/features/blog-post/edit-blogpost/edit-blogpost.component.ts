@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, GuardsCheckEnd, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { BlogPostService } from '../services/blog-post.service';
 import { BlogPost } from '../models/blog-post.model';
@@ -52,7 +52,7 @@ export class EditBlogpostComponent implements OnInit,OnDestroy {
               this.model = response; 
               this.selectedCategories = response.categories.map(x => x.id) 
             }
-          })
+          });
         }
         this.imageSelectSubscription = this.imageService.onSelectImage().subscribe({
           next: (responseImage: any) => {
@@ -61,7 +61,7 @@ export class EditBlogpostComponent implements OnInit,OnDestroy {
               this.isImageSelectorVisible = false;
             }
           }
-        })
+        });
       }
     });
   }
